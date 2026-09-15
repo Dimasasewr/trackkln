@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="PT Karsa Lifestyle Nusantara — Executive Work Tracker">
+  <title>KARSA • Executive Work Tracker</title>
+  <link rel="icon" type="image/jpeg" href="assets/karsa-mark.jpg">
+  <link rel="shortcut icon" href="assets/karsa-mark.jpg">
+  <link rel="apple-touch-icon" href="assets/karsa-mark.jpg">
+  <meta name="application-name" content="KARSA Workspace">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="boot" class="boot">
+    <div class="boot-aura"></div>
+    <div class="boot-card">
+      <div class="brand-mark"><img src="assets/karsa-mark.jpg" alt="Karsa"></div>
+      <div class="brand-kicker">PT KARSA LIFESTYLE NUSANTARA</div>
+      <div class="boot-line"><span></span></div>
+      <div class="boot-status" id="bootStatus">Preparing executive workspace</div>
+    </div>
+  </div>
+
+  <main id="loginPage" class="login-page hidden">
+    <div class="login-orb orb-1"></div><div class="login-orb orb-2"></div>
+    <div class="login-shell">
+      <section class="login-brand">
+        <div class="brand-lockup">
+          <img src="assets/karsa-mark.jpg" alt="Karsa">
+          <div><div class="eyebrow">PT KARSA LIFESTYLE NUSANTARA</div><h1>Work.<br><span>Aligned.</span></h1></div>
+        </div>
+        <p>Ruang kerja internal untuk mengelola pekerjaan, progres, deadline, kendala, dan tindak lanjut setiap divisi.</p>
+        <div class="login-note"><span class="dot-live"></span> Internal access • Credentials only</div>
+      </section>
+
+      <section class="login-card">
+        <div class="login-card-top">
+          <span class="micro-label">SECURE ACCESS</span>
+          <div class="secure-icon">✦</div>
+        </div>
+        <h2>Welcome back.</h2>
+        <p class="muted">Masuk menggunakan kredensial internal yang telah diberikan.</p>
+        <form id="loginForm">
+          <label>Email / Username
+            <div class="input-wrap"><span>◌</span><input id="loginEmail" type="text" autocomplete="username" placeholder="nama@karsa.id" required></div>
+          </label>
+          <label>Password
+            <div class="input-wrap"><span>⌁</span><input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••" required><button type="button" id="togglePass" aria-label="Tampilkan password">◉</button></div>
+          </label>
+          <div id="loginError" class="form-error"></div>
+          <button class="btn-gold btn-login" type="submit"><span>Masuk ke Workspace</span><b>→</b></button>
+        </form>
+        <div class="login-foot">Tidak ada pendaftaran publik. Akun dibuat dan dikelola secara internal.</div>
+      </section>
+    </div>
+  </main>
+
+  <section id="app" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="assets/karsa-mark.jpg" alt="">
+        <div><strong>KARSA</strong><span>WORKSPACE</span></div>
+      </div>
+      <div class="profile-mini">
+        <div class="avatar" id="sideAvatar">KP</div>
+        <div><strong id="sideName">—</strong><span id="sideRole">—</span></div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-view="dashboard"><i>⌂</i> Overview</button>
+        <button class="nav-item" data-view="jobs"><i>▤</i> Pekerjaan</button>
+        <button class="nav-item" data-view="myjobs"><i>✓</i> Pekerjaan Saya</button>
+        <button class="nav-item ops-only" data-view="create"><i>＋</i> Berikan Pekerjaan</button>
+        <button class="nav-item" data-view="weekly"><i>◫</i> Evaluasi Mingguan</button>
+        <button class="nav-item" data-view="structure"><i>⌬</i> Struktur</button>
+      </nav>
+      <div class="side-bottom">
+        <div class="sync-pill"><span></span><div><strong id="connectionText">Local preview</strong><small>Data workspace</small></div></div>
+        <button id="logoutBtn" class="logout">↪ Keluar</button>
+      </div>
+    </aside>
+
+    <div class="mobile-head">
+      <button id="menuBtn">☰</button><div class="mobile-title">KARSA <span>WORKSPACE</span></div><div id="mobileAvatar" class="avatar small">KP</div>
+    </div>
+
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="pageEyebrow">EXECUTIVE WORKSPACE</div>
+          <h2 id="pageTitle">Overview</h2>
+        </div>
+        <div class="top-actions">
+          <div class="clock" id="clock">--:--</div>
+          <button id="notifBtn" class="icon-btn" title="Notifikasi">◌<span id="notifCount" class="notif-count hidden">0</span></button>
+          <button id="quickAdd" class="btn-gold compact ops-only">＋ Pekerjaan</button>
+        </div>
+      </header>
+
+      <div id="toast" class="toast"></div>
+
+      <section class="view active" id="view-dashboard">
+        <div class="hero-banner">
+          <div><span class="micro-label">CONTROL CENTER</span><h1>Good work deserves<br><em>clear visibility.</em></h1><p id="welcomeText">Pantau apa yang berjalan, apa yang tertahan, dan apa yang perlu diselesaikan.</p></div>
+          <div class="hero-ring"><div><strong id="heroProgress">0%</strong><span>completion</span></div></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><span>Total pekerjaan</span><strong id="statTotal">0</strong><small>Dalam workspace</small></article>
+          <article class="stat-card"><span>In Progress</span><strong id="statProgress">0</strong><small>Sedang dikerjakan</small></article>
+          <article class="stat-card"><span>Siap Review</span><strong id="statReview">0</strong><small>Menunggu validasi</small></article>
+          <article class="stat-card"><span>Terkendala</span><strong id="statBlocked">0</strong><small>Butuh perhatian</small></article>
+          <article class="stat-card"><span>Lewat deadline</span><strong id="statLate">0</strong><small>Perlu follow-up</small></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel attention">
+            <div class="panel-head"><div><span class="micro-label">ATTENTION</span><h3>Perlu perhatian</h3></div><button class="text-btn" data-view-link="jobs">Lihat semua →</button></div>
+            <div id="attentionList" class="attention-list"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><span class="micro-label">DIVISION PULSE</span><h3>Distribusi pekerjaan</h3></div></div>
+            <div id="divisionPulse" class="division-pulse"></div>
+          </article>
+        </div>
+        <article class="panel">
+          <div class="panel-head"><div><span class="micro-label">LATEST ACTIVITY</span><h3>Aktivitas terbaru</h3></div></div>
+          <div id="activityList" class="activity-list"></div>
+        </article>
+      </section>
+
+      <section class="view" id="view-jobs">
+        <div class="section-heading"><div><span class="micro-label">WORK REGISTER</span><h1>Semua Pekerjaan</h1><p>Daftar pekerjaan yang dapat dilihat sesuai hak akses akun.</p></div><button class="btn-gold ops-only" id="newJobBtn">＋ Berikan pekerjaan</button></div>
+        <div class="filterbar"><input id="searchJobs" placeholder="Cari pekerjaan, PIC, atau divisi…"><select id="statusFilter"><option value="">Semua status</option><option>Belum Mulai</option><option>In Progress</option><option>Menunggu</option><option>Terkendala</option><option>Siap Review</option><option>Selesai</option></select><select id="divisionFilter"><option value="">Semua divisi</option><option>Finance</option><option>IT</option><option>Operasional</option><option>R&D</option></select></div>
+        <div class="job-table-wrap"><table><thead><tr><th>Pekerjaan</th><th>Divisi / PIC</th><th>Deadline</th><th>Progress</th><th>Status</th><th></th></tr></thead><tbody id="jobRows"></tbody></table></div>
+        <div id="jobEmpty" class="empty hidden"><div>◇</div><h3>Belum ada pekerjaan</h3><p>Belum ada pekerjaan yang sesuai dengan filter.</p></div>
+      </section>
+
+      <section class="view" id="view-myjobs">
+        <div class="section-heading"><div><span class="micro-label">PERSONAL QUEUE</span><h1>Pekerjaan Saya</h1><p>Fokus pada pekerjaan yang menjadi tanggung jawab akun ini.</p></div></div>
+        <div id="myJobsGrid" class="myjobs-grid"></div>
+      </section>
+
+      <section class="view" id="view-create">
+        <div class="section-heading"><div><span class="micro-label">ASSIGNMENT DESK</span><h1>Berikan Pekerjaan</h1><p>General Manager / Head Divisi Operasional menentukan tujuan dan PIC. Setelah disimpan, pekerjaan langsung masuk ke workspace divisi tujuan.</p></div></div>
+        <form id="jobForm" class="form-card">
+          <div class="form-grid">
+            <label class="span-2">Nama pekerjaan<input name="title" required placeholder="Contoh: Finalisasi spesifikasi polo"></label>
+            <label>Tujuan divisi<select name="division" required><option>Finance</option><option>IT</option><option>Operasional</option><option>R&D</option></select></label>
+            <label>PIC / akun tujuan<select name="assigneeId" required><option value="">Pilih PIC...</option></select></label>
+            <label>Deadline<input name="deadline" type="date" required></label>
+            <label>Prioritas<select name="priority"><option>Normal</option><option>High</option><option>Urgent</option></select></label>
+            <label class="span-2">Detail / jobdesc<textarea name="description" rows="4" placeholder="Apa yang harus dikerjakan dan output yang diharapkan?"></textarea></label>
+            <label class="span-2">Next action awal<textarea name="nextAction" rows="3" placeholder="Langkah pertama yang harus dilakukan…"></textarea></label>
+          </div>
+          <div class="form-actions"><button type="button" class="btn-ghost" data-view-link="jobs">Batal</button><button class="btn-gold" type="submit">Kirim ke divisi →</button></div>
+        </form>
+        <div class="routing-preview"><span>ROUTING</span><div><b>GM / HDO</b><i>→</i><b id="routeDivision">Finance</b><i>→</i><b id="routePic">PIC</b></div><small>Hak akses database memastikan pekerjaan hanya terlihat sesuai divisi, dan hanya PIC terpilih yang dapat memperbarui progres.</small></div>
+      </section>
+
+      <section class="view" id="view-weekly">
+        <div class="section-heading"><div><span class="micro-label">WEEKLY REVIEW</span><h1>Evaluasi Mingguan</h1><p>Ringkasan performa pekerjaan berdasarkan data tracker.</p></div><button class="btn-ghost" id="exportBtn">↓ Export CSV</button></div>
+        <div class="weekly-hero"><div><span class="micro-label">WEEKLY COMPLETION</span><strong id="weeklyPercent">0%</strong><p>Rata-rata progres pekerjaan aktif</p></div><div class="week-bars" id="weekBars"></div></div>
+        <div class="weekly-grid"><article class="panel"><div class="panel-head"><h3>Ringkasan status</h3></div><div id="weeklyStatus"></div></article><article class="panel"><div class="panel-head"><h3>Catatan follow-up</h3></div><div id="weeklyFollowup"></div></article></div>
+      </section>
+
+      <section class="view" id="view-structure">
+        <div class="section-heading"><div><span class="micro-label">ORGANIZATION</span><h1>Struktur Akses</h1><p>Struktur organisasi yang menjadi dasar routing pekerjaan dan hak akses.</p></div></div>
+        <article class="structure-card"><img src="assets/org-structure.jpg" alt="Struktur organisasi PT Karsa Lifestyle Nusantara"></article>
+        <div class="access-grid">
+          <article><span>01</span><h3>GM / HDO</h3><p>Membuat assignment, memilih divisi dan PIC, memonitor lintas divisi, melakukan follow-up dan validasi.</p></article>
+          <article><span>02</span><h3>Head Divisi</h3><p>Melihat seluruh pekerjaan divisinya. Hanya dapat memperbarui progres jika akun tersebut dipilih sebagai PIC.</p></article>
+          <article><span>03</span><h3>Staff</h3><p>Dapat melihat pekerjaan di divisinya, tetapi hanya dapat memperbarui progres pekerjaan yang secara eksplisit ditugaskan kepada akun tersebut.</p></article>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <div id="jobModal" class="modal hidden"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><button class="modal-close" data-close-modal>×</button><span class="micro-label">UPDATE WORK</span><h2 id="modalTitle">Update pekerjaan</h2><div id="modalBody"></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
